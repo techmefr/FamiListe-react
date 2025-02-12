@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 function FeatureSlider() {
   return (
     <div className="feature-slider">

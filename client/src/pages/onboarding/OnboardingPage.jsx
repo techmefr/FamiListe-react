@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types';
-import { Button } from '../../components/index';
+import { Button, Heading } from '../../components';
 import './onboarding.css';
 import FeatureSlider from './components/FeatureSlider';
 import OnboardingNav from './components/OnboardingNav';
