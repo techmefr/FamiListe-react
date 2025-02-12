@@ -1,16 +1,34 @@
+// src/main.jsx
 import { createRoot } from 'react-dom/client';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { ThemeProvider } from './contexts/ThemeContext';
+import OnboardingPage from './pages/onboarding/OnboardingPage';
 import App from './App';
 import './styles/global.css';
 
-function initializeApp() {
-  const container = document.getElementById('root');
-  const root = createRoot(container);
-  return root;
+function AppRoutes() {
+  return (
+    <ThemeProvider>
+      <Routes>
+        <Route path="/" element={<Navigate to="/onboarding" />} />
+        <Route path="/onboarding" element={<OnboardingPage />} />
+        <Route path="/auth">
+          <Route path="login" element={<div>Login page coming soon</div>} />
+          <Route path="register" element={<div>Register page coming soon</div>} />
+          <Route path="advanced" element={<div>Advanced settings coming soon</div>} />
+        </Route>
+        <Route path="/app" element={<App />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </ThemeProvider>
+  );
 }
 
-function renderApp(root) {
-  root.render(<App />);
-}
+const container = document.getElementById('root');
+const root = createRoot(container);
 
-const root = initializeApp();
-renderApp(root);
+root.render(
+  <Router>
+    <AppRoutes />
+  </Router>
+);
