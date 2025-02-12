@@ -1,0 +1,47 @@
+/* Variables */
+:root {
+  --color-primary: #0095ff;
+  --color-primary-dark: #1a5fb4;
+
+  --color-text: #1c1c1c;
+  --color-text-light: #6b7280;
+
+  --color-background: #f3f4f6;
+  --color-background-dark: #1c1c1c;
+
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base */
+body {
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.5;
+}
+
+/* Theme */
+[data-theme="dark"] {
+  background-color: var(--color-background-dark);
+  color: white;
+}
+
+/* Layout */
+.app {
+  min-height: 100vh;
+  padding: var(--spacing-md);
+}
