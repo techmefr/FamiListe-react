@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-
+import './button.css';
 function Button({ children, onClick, variant, type, disabled }) {
   return (
     <button type={type} onClick={onClick} disabled={disabled} className={`button ${variant}`}>

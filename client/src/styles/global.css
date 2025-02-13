@@ -1,14 +1,43 @@
-/* Variables */
 :root {
-  --color-primary: #0095ff;
-  --color-primary-dark: #1a5fb4;
+  /* Couleurs primaires */
+  --color-primary-50: #e6f3ff;
+  --color-primary-100: #bde0ff;
+  --color-primary-200: #80c7ff;
+  --color-primary-300: #38aeff;
+  --color-primary-400: #0095ff;
+  --color-primary-500: #007acc;
+  --color-primary-600: #0066b3;
+  --color-primary-700: #004d99;
+  --color-primary-800: #003366;
+  --color-primary-900: #001a33;
 
-  --color-text: #1c1c1c;
-  --color-text-light: #6b7280;
+  /* Couleurs neutres */
+  --color-neutral-50: #f8f9fa;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e9ecef;
+  --color-neutral-300: #dee2e6;
+  --color-neutral-400: #ced4da;
+  --color-neutral-500: #adb5bd;
+  --color-neutral-600: #6c757d;
+  --color-neutral-700: #495057;
+  --color-neutral-800: #343a40;
+  --color-neutral-900: #212529;
 
-  --color-background: #f3f4f6;
+  /* Couleurs sémantiques */
+  --color-error: #dc3545;
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-info: #17a2b8;
+
+  /* Couleurs de base (gardées pour compatibilité) */
+  --color-primary: var(--color-primary-400);
+  --color-primary-dark: var(--color-primary-700);
+  --color-text: var(--color-neutral-900);
+  --color-text-light: var(--color-neutral-600);
+  --color-background: var(--color-neutral-100);
   --color-background-dark: #1c1c1c;
 
+  /* Espacements (conservés de votre code) */
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
   --spacing-md: 1rem;
