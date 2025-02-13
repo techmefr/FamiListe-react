@@ -1,0 +1,70 @@
+.settings-container {
+  padding: var(--spacing-md);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.settings-content {
+  margin-top: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.account-info {
+  background-color: var(--color-neutral-100);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: 8px;
+  font-size: 0.875rem;
+}
+
+[data-theme="dark"] .account-info {
+  background-color: var(--color-background-dark);
+}
+
+.settings-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.settings-buttons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  transition: transform 0.2s ease;
+}
+
+.settings-buttons button:hover {
+  transform: translateY(-1px);
+}
+
+.display-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--color-neutral-100);
+  border-radius: 8px;
+}
+
+[data-theme="dark"] .display-item {
+  background-color: var(--color-background-dark);
+}
+
+.separator {
+  height: 1px;
+  background-color: var(--color-neutral-200);
+  margin: var(--spacing-xs) 0;
+}
+
+[data-theme="dark"] .separator {
+  background-color: var(--color-neutral-800);
+}

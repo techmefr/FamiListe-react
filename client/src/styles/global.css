@@ -35,6 +35,11 @@
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
   --font-size: 18px;
+  --surface-1: #f8f9fa;
+  --surface-2: #e9ecef;
+  --text-1: #212529;
+  --text-2: #495057;
+  --border-color: #dee2e6;
 }
 
 * {
