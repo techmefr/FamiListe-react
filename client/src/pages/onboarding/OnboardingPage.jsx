@@ -12,10 +12,6 @@ function OnboardingPage() {
 
   return (
     <div className="onboarding-container">
-      <header className="onboarding-header">
-        <Heading level={1}>FamiListe</Heading>
-      </header>
-
       <main className="onboarding-content">
         <FeatureSlider />
         <div className="onboarding-settings">

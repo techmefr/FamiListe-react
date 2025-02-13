@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components';
-import Header from '../../components/header/Header';
 import './authPage.css';
 
 function AuthPage() {
@@ -8,8 +7,6 @@ function AuthPage() {
 
   return (
     <div className="auth-container">
-      <Header />
-
       <main className="auth-content">
         <div className="auth-message">
           <h2>Bienvenue sur FamiListe</h2>
