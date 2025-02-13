@@ -1,0 +1,29 @@
+.text {
+  margin-bottom: var(--spacing-sm);
+}
+
+.text.body {
+  font-size: 1rem;
+}
+
+.text.small {
+  font-size: 0.875rem;
+}
+
+.heading {
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-md);
+}
+
+.heading-1 {
+  font-size: 2rem;
+}
+
+.heading-2 {
+  font-size: 1.5rem;
+}
+
+.heading-3 {
+  font-size: 1.25rem;
+}
