@@ -47,19 +47,21 @@ const CameraComponent = () => {
         />
       </div>
       <div className="camera-controls">
-        <button onClick={handleSwitchCamera}>
+        <button type="button" onClick={handleSwitchCamera} className="camera-button">
           <RefreshCw />
         </button>
-        <input
-          type="range"
-          min="1"
-          max="3"
-          step="0.1"
-          value={zoomLevel}
-          onChange={handleZoomChange}
-          className="zoom-slider"
-        />
-        <button onClick={toggleFlash}>
+        <div className="zoom-slider-container">
+          <input
+            type="range"
+            min="1"
+            max="3"
+            step="0.1"
+            value={zoomLevel}
+            onChange={handleZoomChange}
+            className="zoom-slider"
+          />
+        </div>
+        <button type="button" onClick={toggleFlash} className="camera-button">
           <Zap color={flashEnabled ? 'yellow' : 'white'} />
         </button>
       </div>

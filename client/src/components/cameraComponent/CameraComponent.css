@@ -1,44 +1,136 @@
 .camera-container {
+  position: fixed;
+  top: 6rem;
+  left: 0;
+  right: 0;
+  bottom: 5rem;
+  background-color: #000;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 5rem);
-  position: relative;
 }
 
 .camera-view {
-  flex: 1;
   position: relative;
+  width: 100%;
+  height: calc(100% - 80px);
+  overflow: hidden;
+  background-color: #000;
 }
 
 .camera {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 .camera-controls {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 20px 0;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
-  background: rgba(0, 0, 0, 0.5);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  z-index: 10;
 }
 
-.camera-controls button {
+.camera-button {
   background: none;
   border: none;
-  color: white;
-  font-size: 24px;
+  padding: 16px;
+  height: 56px;
+  width: 56px;
   cursor: pointer;
-  outline: none;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.camera-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.camera-button:active {
+  transform: scale(0.95);
 }
 
 .zoom-slider {
-  width: 50%;
+  -webkit-appearance: none;
+  width: 80%;
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  outline: none;
+  margin: 0 20px;
+}
+
+.zoom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.zoom-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.zoom-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.zoom-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.zoom-slider::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(to right, #fff 0%, rgba(255, 255, 255, 0.2) 100%);
+}
+
+.zoom-slider::-moz-range-track {
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(to right, #fff 0%, rgba(255, 255, 255, 0.2) 100%);
+}
+
+@media (max-width: 768px) {
+  .camera-controls {
+    height: 70px;
+    padding: 0 16px;
+  }
+
+  .zoom-slider {
+    width: 70%;
+  }
+
+  .camera-button {
+    padding: 12px;
+    height: 48px;
+    width: 48px;
+  }
 }
