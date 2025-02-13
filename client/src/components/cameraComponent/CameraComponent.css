@@ -1,0 +1,44 @@
+.camera-container {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 5rem);
+  position: relative;
+}
+
+.camera-view {
+  flex: 1;
+  position: relative;
+}
+
+.camera {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.camera-controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.camera-controls button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  outline: none;
+}
+
+.zoom-slider {
+  width: 50%;
+}

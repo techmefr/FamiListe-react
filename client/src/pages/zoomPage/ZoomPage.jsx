@@ -1,12 +1,7 @@
-import Heading from '../../components/typography/Heading';
+import CameraComponent from '../../components/cameraComponent/CameraComponent';
 
 function ZoomPage() {
-  return (
-    <div>
-      <Heading level={2}>Lecture</Heading>
-      <p>Contenu de la page oLecture</p>
-    </div>
-  );
+  return <CameraComponent />;
 }
 
 export default ZoomPage;
