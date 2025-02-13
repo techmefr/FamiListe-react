@@ -16,6 +16,8 @@
   margin: 0 auto;
   width: 100%;
   padding: var(--spacing-xl) var(--spacing-md);
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
 .auth-message {
@@ -24,13 +26,15 @@
 }
 
 .auth-message h2 {
-  color: var(--color-text);
+  color: var(--color-text-primary); /* Assure un noir en clair, blanc en dark */
   margin-bottom: var(--spacing-md);
   font-size: 1.5em;
 }
 
 .auth-message p {
-  color: var(--color-text-light);
+  color: var(
+    --color-text-secondary
+  ); /* Pour correspondre à la teinte correcte */
   line-height: 1.6;
 }
 
@@ -73,6 +77,24 @@
   font-size: 0.9em;
 }
 
+/* MODE DARK */
+[data-theme="dark"] .auth-container {
+  background-color: var(--color-background-dark);
+}
+
+[data-theme="dark"] .auth-content {
+  background-color: var(--color-background-dark);
+  color: var(--color-text-light);
+}
+
+[data-theme="dark"] .auth-message h2 {
+  color: var(--color-text-light); /* Blanc en dark */
+}
+
+[data-theme="dark"] .auth-message p {
+  color: var(--color-text-lighter); /* Blanc en dark mais plus doux */
+}
+
 [data-theme="dark"] .divider::before,
 [data-theme="dark"] .divider::after {
   background-color: var(--color-neutral-600);
@@ -80,4 +102,5 @@
 
 [data-theme="dark"] .divider span {
   background-color: var(--color-background-dark);
+  color: var(--color-text-lighter);
 }
