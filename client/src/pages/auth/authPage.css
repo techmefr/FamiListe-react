@@ -1,0 +1,84 @@
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-md);
+  background-color: var(--color-background);
+}
+
+.auth-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+  padding: var(--spacing-xl) var(--spacing-md);
+}
+
+.auth-message {
+  text-align: center;
+  max-width: 400px;
+}
+
+.auth-message h2 {
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+  font-size: 1.5em;
+}
+
+.auth-message p {
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+.auth-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  width: 100%;
+  max-width: 300px;
+}
+
+.divider {
+  position: relative;
+  text-align: center;
+  margin: var(--spacing-sm) 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: calc(50% - 2rem);
+  height: 1px;
+  background-color: var(--color-neutral-300);
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.divider span {
+  background-color: var(--color-background);
+  padding: 0 var(--spacing-sm);
+  color: var(--color-text-light);
+  font-size: 0.9em;
+}
+
+[data-theme="dark"] .divider::before,
+[data-theme="dark"] .divider::after {
+  background-color: var(--color-neutral-600);
+}
+
+[data-theme="dark"] .divider span {
+  background-color: var(--color-background-dark);
+}

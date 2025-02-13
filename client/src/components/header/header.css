@@ -1,0 +1,26 @@
+.app-header {
+  padding: var(--spacing-md) 0;
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.header-content {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.header-content svg {
+  width: 64px;
+  height: 64px;
+}
+
+.header-content h1,
+.header-content h2,
+.header-content h3,
+.header-content h4,
+.header-content h5,
+.header-content h6 {
+  margin: 0;
+  line-height: 1;
+}

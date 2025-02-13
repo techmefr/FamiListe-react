@@ -1,13 +1,14 @@
-import { Heading } from '../../components';
+import { useNavigate } from 'react-router-dom';
+import { Heading, Button } from '../../components/index';
 import { useTheme } from '../../contexts/ThemeContext';
 import FeatureSlider from './components/FeatureSlider';
-import OnboardingNav from '../../pages/onboarding/components/OnboardingNavigation';
 import FontSizePicker from '../../components/fontSizerPicker/FontSizePicker';
 import ThemeSwitch from '../../components/themeSwitch/ThemeSwitch';
 import './onboarding.css';
 
 function OnboardingPage() {
   const { theme, toggleTheme } = useTheme();
+  const navigate = useNavigate();
 
   return (
     <div className="onboarding-container">
@@ -30,7 +31,10 @@ function OnboardingPage() {
             </div>
           </div>
         </div>
-        <OnboardingNav />
+        <Button variant="primary" className="continue-button" onClick={() => navigate('/auth')}>
+          Continuer
+          <span className="continue-arrow">→</span>
+        </Button>
       </main>
     </div>
   );

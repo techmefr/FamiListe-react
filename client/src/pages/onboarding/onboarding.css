@@ -160,3 +160,23 @@
   gap: var(--spacing-md);
   width: 100%;
 }
+
+.continue-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md) var(--spacing-lg);
+  width: fit-content;
+  align-self: center;
+}
+
+.continue-arrow {
+  margin-left: var(--spacing-xs);
+  transition: transform 0.3s ease;
+}
+
+.continue-button:hover .continue-arrow {
+  transform: translateX(4px);
+}
