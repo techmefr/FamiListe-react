@@ -1,7 +1,8 @@
-// src/main.jsx
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { AuthProvider } from './contexts/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 import MainLayout from './layouts/MainLayout';
 import OnboardingPage from './pages/onboarding/OnboardingPage';
 import AuthPage from './pages/auth/AuthPage';
@@ -14,23 +15,63 @@ import './styles/global.css';
 
 function AppRoutes() {
   return (
-    <ThemeProvider>
-      <MainLayout>
-        <Routes>
-          <Route path="/" element={<Navigate to="/onboarding" />} />
-          <Route path="/onboarding" element={<OnboardingPage />} />
-          <Route path="/auth" element={<AuthPage />} />
-          <Route path="/auth/login" element={<div>Login page coming soon</div>} />
-          <Route path="/auth/register" element={<div>Register page coming soon</div>} />
-          <Route path="/app" element={<App />} />
-          <Route path="/list" element={<ListPage />} />
-          <Route path="/zoom" element={<ZoomPage />} />
-          <Route path="/cards" element={<CardsPage />} />
-          <Route path="/settings" element={<SettingsPage />} />
-          <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
-      </MainLayout>
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider>
+        <MainLayout>
+          <Routes>
+            {/* Routes publiques */}
+            <Route path="/" element={<Navigate to="/onboarding" />} />
+            <Route path="/onboarding" element={<OnboardingPage />} />
+            <Route path="/auth/*" element={<AuthPage />} />
+
+            {/* Routes protégées */}
+            <Route
+              path="/app"
+              element={
+                <ProtectedRoute>
+                  <App />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/list"
+              element={
+                <ProtectedRoute>
+                  <ListPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/zoom"
+              element={
+                <ProtectedRoute>
+                  <ZoomPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/cards"
+              element={
+                <ProtectedRoute>
+                  <CardsPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/settings"
+              element={
+                <ProtectedRoute>
+                  <SettingsPage />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Redirection fallback */}
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </MainLayout>
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
 

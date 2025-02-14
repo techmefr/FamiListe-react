@@ -5,6 +5,7 @@ import FeatureSlider from './components/FeatureSlider';
 import FontSizePicker from '../../components/fontSizerPicker/FontSizePicker';
 import ThemeSwitch from '../../components/themeSwitch/ThemeSwitch';
 import './onboarding.css';
+import '../auth/authPage.css';
 
 function OnboardingPage() {
   const { theme, toggleTheme } = useTheme();

@@ -1,8 +1,17 @@
+// Button.jsx
 import PropTypes from 'prop-types';
 import './button.css';
+
 function Button({ children, onClick, variant, type, disabled }) {
+  const handleClick = (e) => {
+    console.log('Button clicked');
+    if (onClick) {
+      onClick(e);
+    }
+  };
+
   return (
-    <button type={type} onClick={onClick} disabled={disabled} className={`button ${variant}`}>
+    <button type={type} onClick={handleClick} disabled={disabled} className={`button ${variant}`}>
       {children}
     </button>
   );

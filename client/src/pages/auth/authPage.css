@@ -1,9 +1,11 @@
+/* Layout */
 .auth-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   padding: var(--spacing-md);
   background-color: var(--color-background);
+  overflow: hidden;
 }
 
 .auth-content {
@@ -12,40 +14,40 @@
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-xl);
+  width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  width: 100%;
   padding: var(--spacing-xl) var(--spacing-md);
-  background-color: var(--color-background);
   color: var(--color-text);
 }
 
+/* Message */
 .auth-message {
-  text-align: center;
   max-width: 400px;
+  text-align: center;
 }
 
 .auth-message h2 {
-  color: var(--color-text-primary); /* Assure un noir en clair, blanc en dark */
   margin-bottom: var(--spacing-md);
   font-size: 1.5em;
+  color: var(--color-text);
 }
 
 .auth-message p {
-  color: var(
-    --color-text-secondary
-  ); /* Pour correspondre à la teinte correcte */
   line-height: 1.6;
+  color: var(--color-text-light);
 }
 
+/* Buttons */
 .auth-buttons {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: var(--spacing-lg);
   width: 100%;
   max-width: 300px;
 }
 
+/* Divider */
 .divider {
   position: relative;
   text-align: center;
@@ -54,7 +56,7 @@
 
 .divider::before,
 .divider::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   width: calc(50% - 2rem);
@@ -71,36 +73,19 @@
 }
 
 .divider span {
-  background-color: var(--color-background);
   padding: 0 var(--spacing-sm);
-  color: var(--color-text-light);
   font-size: 0.9em;
-}
-
-/* MODE DARK */
-[data-theme="dark"] .auth-container {
-  background-color: var(--color-background-dark);
-}
-
-[data-theme="dark"] .auth-content {
-  background-color: var(--color-background-dark);
   color: var(--color-text-light);
+  background-color: var(--color-background);
 }
 
-[data-theme="dark"] .auth-message h2 {
-  color: var(--color-text-light); /* Blanc en dark */
-}
-
-[data-theme="dark"] .auth-message p {
-  color: var(--color-text-lighter); /* Blanc en dark mais plus doux */
-}
-
-[data-theme="dark"] .divider::before,
-[data-theme="dark"] .divider::after {
+/* Dark mode */
+[data-theme='dark'] .divider::before,
+[data-theme='dark'] .divider::after {
   background-color: var(--color-neutral-600);
 }
 
-[data-theme="dark"] .divider span {
+[data-theme='dark'] .divider span {
   background-color: var(--color-background-dark);
-  color: var(--color-text-lighter);
+  color: var(--color-neutral-300);
 }
