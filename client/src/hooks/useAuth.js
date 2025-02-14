@@ -9,7 +9,6 @@ export function useAuth() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Vérifie la session utilisateur
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -49,9 +48,29 @@ export function useAuth() {
         password,
       });
 
-      if (authError) throw authError;
+      if (authError) {
+        switch (authError.message) {
+          case 'Invalid login credentials':
+            throw new Error('Email ou mot de passe incorrect');
+          case 'Email not confirmed':
+            throw new Error('Veuillez confirmer votre email');
+          default:
+            throw new Error(authError.message);
+        }
+      }
 
-      return data;
+      if (!data?.session) {
+        throw new Error('Session invalide');
+      }
+
+      // Mise à jour de la session
+      await supabase.auth.setSession(data.session);
+      setUser(data.user);
+
+      return {
+        user: data.user,
+        session: data.session,
+      };
     } catch (error) {
       setError({ field: 'submit', message: error.message });
       return null;
@@ -83,13 +102,25 @@ export function useAuth() {
 
   const logout = async () => {
     try {
+      console.log('Début de la déconnexion dans useAuth');
       setIsLoading(true);
       setError(null);
 
       const { error: authError } = await supabase.auth.signOut();
+      console.log('Résultat de signOut:', authError);
+
       if (authError) throw authError;
+
+      setUser(null);
+
+      localStorage.clear();
+
+      console.log('Déconnexion réussie');
+      return true;
     } catch (error) {
+      console.error('Erreur de déconnexion:', error);
       setError({ field: 'submit', message: error.message });
+      return false;
     } finally {
       setIsLoading(false);
     }

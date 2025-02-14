@@ -21,9 +21,12 @@ function LoginForm() {
 
   const handlePasswordSubmit = async (e) => {
     e.preventDefault();
-    const user = await login(email, password);
-    if (user) {
-      navigate('/app');
+    const result = await login(email, password);
+    if (result?.user && result?.session) {
+      // Petit délai pour s'assurer que la session est bien établie
+      setTimeout(() => {
+        navigate('/list');
+      }, 100);
     }
   };
 

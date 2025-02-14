@@ -9,6 +9,8 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-size: inherit;
+  z-index: 1;
+  pointer-events: auto;
 }
 
 .button:disabled {
@@ -18,11 +20,7 @@
 }
 
 .button.primary {
-  background: linear-gradient(
-    135deg,
-    var(--color-primary) 0%,
-    var(--color-primary-dark) 100%
-  );
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   color: white;
 }
 
@@ -38,12 +36,15 @@
 }
 
 .button.secondary:hover:not(:disabled) {
-  background: linear-gradient(
-    135deg,
-    var(--color-primary) 0%,
-    var(--color-primary-dark) 100%
-  );
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
   color: white;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
+}
+
+.button-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  pointer-events: none;
 }

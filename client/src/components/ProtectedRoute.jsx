@@ -1,10 +1,14 @@
 import PropTypes from 'prop-types';
 import { Navigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
+import { useAuthContext } from '../contexts/AuthContext';
 
 function ProtectedRoute({ children }) {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, isLoading } = useAuthContext();
   const location = useLocation();
+
+  if (isLoading) {
+    return <div>Chargement...</div>; // A remplacer par un composant loading
+  }
 
   if (!isAuthenticated) {
     return <Navigate to="/auth/login" state={{ from: location }} replace />;
