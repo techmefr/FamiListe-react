@@ -4,13 +4,14 @@
   flex-direction: column;
   padding: var(--spacing-md);
   background-color: var(--color-background);
+  overflow: hidden;
 }
 
 .auth-content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--spacing-xl);
   max-width: 600px;
   margin: 0 auto;
@@ -21,27 +22,24 @@
 }
 
 .auth-message {
-  text-align: center;
   max-width: 400px;
 }
 
 .auth-message h2 {
-  color: var(--color-text-primary); /* Assure un noir en clair, blanc en dark */
+  color: var(--color-text);
   margin-bottom: var(--spacing-md);
   font-size: 1.5em;
 }
 
 .auth-message p {
-  color: var(
-    --color-text-secondary
-  ); /* Pour correspondre à la teinte correcte */
+  color: var(--color-text-light);
   line-height: 1.6;
 }
 
 .auth-buttons {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: var(--spacing-lg);
   width: 100%;
   max-width: 300px;
 }
@@ -77,22 +75,21 @@
   font-size: 0.9em;
 }
 
-/* MODE DARK */
 [data-theme="dark"] .auth-container {
   background-color: var(--color-background-dark);
 }
 
 [data-theme="dark"] .auth-content {
   background-color: var(--color-background-dark);
-  color: var(--color-text-light);
+  color: var(--color-neutral-100);
 }
 
 [data-theme="dark"] .auth-message h2 {
-  color: var(--color-text-light); /* Blanc en dark */
+  color: var(--color-neutral-100);
 }
 
 [data-theme="dark"] .auth-message p {
-  color: var(--color-text-lighter); /* Blanc en dark mais plus doux */
+  color: var(--color-neutral-300);
 }
 
 [data-theme="dark"] .divider::before,
@@ -102,5 +99,5 @@
 
 [data-theme="dark"] .divider span {
   background-color: var(--color-background-dark);
-  color: var(--color-text-lighter);
+  color: var(--color-neutral-300);
 }
