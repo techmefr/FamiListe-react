@@ -1,20 +1,26 @@
 import { LogOut, RefreshCw } from 'lucide-react';
 import Button from '../button/Button';
+import { useAuth } from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 import './accountControls.css';
 
 function AccountControls() {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
   function handleSync() {
-    // À implémenter
+    // À implémenter plus tard
   }
 
-  function handleLogout() {
-    // À implémenter
+  async function handleLogout() {
+    await logout();
+    navigate('/auth');
   }
 
   return (
     <div className="account-controls">
       <div className="account-info">
-        <span className="account-email">email@example.com</span>
+        <span className="account-email">{user?.email || 'email@example.com'}</span>
       </div>
       <div className="account-actions">
         <Button onClick={handleSync} variant="secondary">

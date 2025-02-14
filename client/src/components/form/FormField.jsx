@@ -1,17 +1,16 @@
 import PropTypes from 'prop-types';
-import './form.css';
 
-export function FormField({ label, error, children, required }) {
+function FormField({ label, error, children, required }) {
   return (
-    <div className="form-field">
+    <div className="space-y-2">
       {label && (
-        <label className="form-label">
+        <label className="block font-medium">
           {label}
           {required && <span className="text-red-500 ml-1">*</span>}
         </label>
       )}
       {children}
-      {error && <p className="form-error">{error}</p>}
+      {error && <p className="text-red-500 text-sm">{error}</p>}
     </div>
   );
 }
@@ -22,3 +21,9 @@ FormField.propTypes = {
   children: PropTypes.node.isRequired,
   required: PropTypes.bool,
 };
+
+FormField.defaultProps = {
+  required: false,
+};
+
+export default FormField;

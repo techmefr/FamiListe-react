@@ -10,9 +10,4 @@ export const authSchemas = {
     .regex(/[a-z]/, 'Au moins une minuscule')
     .regex(/[0-9]/, 'Au moins un chiffre')
     .regex(/[^A-Za-z0-9]/, 'Au moins un caractère spécial'),
-
-  login: z.object({
-    email: z.string().min(1, "L'email est requis"),
-    password: z.string().min(1, 'Le mot de passe est requis'),
-  }),
 };
