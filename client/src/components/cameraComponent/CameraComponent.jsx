@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Webcam from 'react-webcam';
 import { RefreshCw, Zap } from 'lucide-react';
 import './CameraComponent.css';
@@ -8,62 +8,81 @@ const CameraComponent = () => {
   const [deviceId, setDeviceId] = useState(null);
   const [flashEnabled, setFlashEnabled] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
+  const [isPortrait, setIsPortrait] = useState(window.innerHeight > window.innerWidth);
 
-  function handleSwitchCamera() {
+  useEffect(() => {
+    const handleResize = () => {
+      setIsPortrait(window.innerHeight > window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (webcamRef.current?.video) {
+      const track = webcamRef.current.video.srcObject?.getVideoTracks()[0];
+      if (track?.applyConstraints) {
+        track.applyConstraints({ advanced: [{ zoom: zoomLevel }] });
+      }
+    }
+  }, [zoomLevel]);
+
+  const handleSwitchCamera = () => {
     navigator.mediaDevices.enumerateDevices().then((devices) => {
       const videoDevices = devices.filter((device) => device.kind === 'videoinput');
       const currentDeviceIndex = videoDevices.findIndex((device) => device.deviceId === deviceId);
       const nextDeviceIndex = (currentDeviceIndex + 1) % videoDevices.length;
       setDeviceId(videoDevices[nextDeviceIndex].deviceId);
     });
-  }
+  };
 
-  function toggleFlash() {
+  const toggleFlash = () => {
     setFlashEnabled((prev) => !prev);
-  }
+  };
 
-  function handleZoomChange(event) {
+  const handleZoomChange = (event) => {
     setZoomLevel(Number(event.target.value));
-  }
+  };
 
   return (
-    <div className="camera-container">
-      <div className="camera-view">
-        <Webcam
-          audio={false}
-          ref={webcamRef}
-          videoConstraints={{
-            deviceId: deviceId,
-            facingMode: 'user',
-            width: 1280,
-            height: 720,
-          }}
-          screenshotFormat="image/jpeg"
-          className="camera"
-          style={{
-            transform: `scale(${zoomLevel})`,
-            filter: flashEnabled ? 'brightness(2)' : 'brightness(1)',
-          }}
-        />
-      </div>
-      <div className="camera-controls">
-        <button type="button" onClick={handleSwitchCamera} className="camera-button">
-          <RefreshCw />
-        </button>
-        <div className="zoom-slider-container">
-          <input
-            type="range"
-            min="1"
-            max="3"
-            step="0.1"
-            value={zoomLevel}
-            onChange={handleZoomChange}
-            className="zoom-slider"
+    <div className={`zoom-camera ${isPortrait ? 'portrait' : 'landscape'}`}>
+      <div className="camera-container">
+        <div className="camera-view">
+          <Webcam
+            audio={false}
+            ref={webcamRef}
+            videoConstraints={{
+              deviceId: deviceId,
+              facingMode: 'environment',
+              width: isPortrait ? 720 : 1280,
+              height: isPortrait ? 1280 : 720,
+            }}
+            screenshotFormat="image/jpeg"
+            className="camera"
+            style={{
+              filter: flashEnabled ? 'brightness(2)' : 'brightness(1)',
+            }}
           />
         </div>
-        <button type="button" onClick={toggleFlash} className="camera-button">
-          <Zap color={flashEnabled ? 'yellow' : 'white'} />
-        </button>
+        <div className="camera-controls">
+          <button type="button" onClick={handleSwitchCamera} className="camera-button">
+            <RefreshCw />
+          </button>
+          <div className="zoom-slider-container">
+            <input
+              type="range"
+              min="1"
+              max="3"
+              step="0.1"
+              value={zoomLevel}
+              onChange={handleZoomChange}
+              className="zoom-slider"
+            />
+          </div>
+          <button type="button" onClick={toggleFlash} className="camera-button">
+            <Zap color={flashEnabled ? 'yellow' : 'white'} />
+          </button>
+        </div>
       </div>
     </div>
   );

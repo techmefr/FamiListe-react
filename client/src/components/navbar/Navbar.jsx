@@ -1,7 +1,8 @@
-// src/components/navbar/Navbar.jsx
+// src/components//Navbar.jsx
 import { useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Glasses, Search, Plus, CreditCard, Settings, ArrowLeft } from 'lucide-react';
+import { useForm } from '../../contexts/FormContext';
 import './navbar.css';
 
 function NavButton({ Icon, label, action, isActive }) {
@@ -35,11 +36,21 @@ NavButton.defaultProps = {
 function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { setShowForm } = useForm();
   const currentPath = location.pathname.split('/')[1] || 'list';
 
   function isPage(page) {
     return currentPath === page;
   }
+
+  const handleAdd = () => {
+    if (currentPath === 'cards') {
+      setShowForm(true);
+    } else if (currentPath === 'list') {
+      // Logique pour ajouter à la liste
+      console.log('Ajouter à la liste');
+    }
+  };
 
   const navItems = [
     {
@@ -57,7 +68,7 @@ function Navbar() {
     {
       Icon: Plus,
       label: 'Ajouter',
-      action: () => console.log('Popup à implémenter'),
+      action: handleAdd,
       isActive: false,
     },
     {
