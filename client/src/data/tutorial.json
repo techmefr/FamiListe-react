@@ -1,0 +1,51 @@
+{
+  "stores": [
+    {
+      "id": "1",
+      "name": "Tutoriel",
+      "created_at": "2024-02-16"
+    }
+  ],
+  "shelves": [
+    {
+      "id": "1",
+      "store_id": "1",
+      "name": "Fruits & Légumes",
+      "icon": "🍏",
+      "order": 1
+    },
+    {
+      "id": "2",
+      "store_id": "1",
+      "name": "Épicerie",
+      "icon": "🛒",
+      "order": 2
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "shelf_id": "1",
+      "name": "Pommes",
+      "quantity": 2,
+      "unit": "kg",
+      "checked": false
+    },
+    {
+      "id": "2",
+      "shelf_id": "1",
+      "name": "Tomates",
+      "quantity": 500,
+      "unit": "g",
+      "checked": false
+    },
+    {
+      "id": "3",
+      "shelf_id": "2",
+      "name": "Pâtes",
+      "quantity": 1,
+      "unit": "pcs",
+      "checked": false
+    }
+  ]
+}

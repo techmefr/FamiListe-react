@@ -7,9 +7,7 @@ import { FormProvider } from '../contexts/FormContext';
 function MainLayout({ children }) {
   const location = useLocation();
   const pathname = location.pathname;
-
   const noNavbarRoutes = ['/onboarding', '/auth', '/auth/login', '/auth/register'];
-
   const shouldShowNavbar = !noNavbarRoutes.some((route) => pathname.startsWith(route));
 
   return (
@@ -18,7 +16,7 @@ function MainLayout({ children }) {
         <Header />
         <main>{children}</main>
         {shouldShowNavbar && <Navbar />}
-        <AddForm /> {/* Ajoutez ceci */}
+        <AddForm />
       </div>
     </FormProvider>
   );

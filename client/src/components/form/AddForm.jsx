@@ -7,21 +7,25 @@ function AddForm() {
   const location = useLocation();
   const { showForm, setShowForm } = useForm();
 
+  console.log('showForm:', showForm);
+
   if (!showForm) return null;
 
   const handleClose = () => {
     setShowForm(false);
   };
 
-  if (location.pathname === '/cards') {
-    return <CardForm onClose={handleClose} />;
-  }
-
-  if (location.pathname === '/list') {
-    return <ProductForm onClose={handleClose} />;
-  }
-
-  return null;
+  return (
+    <div className={`form-overlay ${showForm ? 'open' : ''}`} onClick={handleClose}>
+      <div className="form-container" onClick={(e) => e.stopPropagation()}>
+        {location.pathname === '/cards' ? (
+          <CardForm onClose={handleClose} />
+        ) : location.pathname === '/list' ? (
+          <ProductForm onClose={handleClose} />
+        ) : null}
+      </div>
+    </div>
+  );
 }
 
 export default AddForm;

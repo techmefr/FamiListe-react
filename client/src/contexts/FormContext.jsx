@@ -1,4 +1,3 @@
-// src/contexts/FormContext.jsx
 import { createContext, useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -15,9 +14,5 @@ FormProvider.propTypes = {
 };
 
 export function useForm() {
-  const context = useContext(FormContext);
-  if (!context) {
-    throw new Error('useForm must be used within a FormProvider');
-  }
-  return context;
+  return useContext(FormContext);
 }

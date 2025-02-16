@@ -8,15 +8,6 @@ const CameraComponent = () => {
   const [deviceId, setDeviceId] = useState(null);
   const [flashEnabled, setFlashEnabled] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(1);
-  const [isPortrait, setIsPortrait] = useState(window.innerHeight > window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsPortrait(window.innerHeight > window.innerWidth);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   useEffect(() => {
     if (webcamRef.current?.video) {
@@ -45,7 +36,7 @@ const CameraComponent = () => {
   };
 
   return (
-    <div className={`zoom-camera ${isPortrait ? 'portrait' : 'landscape'}`}>
+    <div className="zoom-camera">
       <div className="camera-container">
         <div className="camera-view">
           <Webcam
@@ -54,12 +45,13 @@ const CameraComponent = () => {
             videoConstraints={{
               deviceId: deviceId,
               facingMode: 'environment',
-              width: isPortrait ? 720 : 1280,
-              height: isPortrait ? 1280 : 720,
+              width: 1280,
+              height: 720,
             }}
             screenshotFormat="image/jpeg"
             className="camera"
             style={{
+              transform: 'rotate(-90deg)',
               filter: flashEnabled ? 'brightness(2)' : 'brightness(1)',
             }}
           />

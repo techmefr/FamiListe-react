@@ -1,4 +1,3 @@
-// src/components//Navbar.jsx
 import { useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Glasses, Search, Plus, CreditCard, Settings, ArrowLeft } from 'lucide-react';
@@ -44,12 +43,8 @@ function Navbar() {
   }
 
   const handleAdd = () => {
-    if (currentPath === 'cards') {
-      setShowForm(true);
-    } else if (currentPath === 'list') {
-      // Logique pour ajouter à la liste
-      console.log('Ajouter à la liste');
-    }
+    console.log('✅ Bouton Ajouter cliqué, setShowForm(true) exécuté !');
+    setShowForm(true);
   };
 
   const navItems = [

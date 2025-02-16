@@ -2,7 +2,6 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { AuthProvider } from './contexts/AuthContext';
-import { FormProvider } from './contexts/FormContext';
 import { CardProvider } from './contexts/CardContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import MainLayout from './layouts/MainLayout';
@@ -14,13 +13,14 @@ import CardsPage from './pages/cardsPage/CardsPage';
 import SettingsPage from './pages/SettingsPage/SettingsPage';
 import App from './App';
 import './styles/global.css';
+import { ShoppingListProvider } from './contexts/ShoppingListContext';
 
 function AppRoutes() {
   return (
     <AuthProvider>
       <ThemeProvider>
-        <FormProvider>
-          <CardProvider>
+        <CardProvider>
+          <ShoppingListProvider>
             <MainLayout>
               <Routes>
                 {/* Routes publiques */}
@@ -74,8 +74,8 @@ function AppRoutes() {
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </MainLayout>
-          </CardProvider>
-        </FormProvider>
+          </ShoppingListProvider>
+        </CardProvider>
       </ThemeProvider>
     </AuthProvider>
   );
