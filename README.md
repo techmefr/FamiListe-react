@@ -123,7 +123,6 @@ Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
 ## 🙏 Remerciements
 
-- La Wild Code School pour la formation
 - La Région Auvergne-Rhône-Alpes pour le financement de la formation
 - Ma famille pour leur soutien et leur participation aux tests utilisateurs
 
